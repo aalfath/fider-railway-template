@@ -9,4 +9,4 @@ ENV MP_DATABASE=/data/mailpit.db \
     MP_MAX_MESSAGES=1000
 
 EXPOSE 8025 1025
-ENTRYPOINT ["/bin/sh", "-c", "exec /mailpit --listen \"[::]:${PORT:-8025}\""]
+ENTRYPOINT ["/bin/sh", "-c", "mkdir -p \"$(dirname \"$MP_DATABASE\")\" && exec /mailpit --listen \"[::]:${PORT:-8025}\""]
